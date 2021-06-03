@@ -10,6 +10,41 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <strong>
+          <%= link_to "nagano cake", root_path, class: "navbar-brand py-4" %>
+        </strong>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item mr-4">
+                <button type="button" class="btn btn-secondary">
+                 <%= link_to "About", about_path, style: "color:white" %>
+                </button>
+              </li>
+              <li class="nav-item mr-4">
+               <button type="button" class="btn btn-secondary">
+                 <%= link_to "商品一覧", items_path, style: "color:white" %>
+                </button>
+              </li>
+              <li class="nav-item mr-4">
+                <button type="button" class="btn btn-secondary">
+                 <%= link_to "新規登録", new_registration_path, style: "color:white" %>
+                </button>
+              </li>
+              <li class="nav-item mr-4">
+                <button type="button" class="btn btn-secondary">
+                 <%#= link_to "ログイン", new_session_path, style: "color:white" %>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -4,10 +4,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'public/homes#top'
+  
+  devise_for :admins, controllers: {
+    sessions:      'admin/sessions',
+    passwords:     'admin/passwords',
+    registrations: 'admin/registrations'
+  }
 
   scope module: :public do
+    get '/about' => 'homes#about'
     resources :items, only: [:index, :show]
-    resources :registrations, only: [:new, :create]
     resource :customers, only: [:show, :edit, :update]
     get '/customers/resign' => 'customers#resign'
     patch '/customers/resign_prcs' => 'customers#resign_prcs'
@@ -19,9 +25,14 @@ Rails.application.routes.draw do
     get '/orders/thanks' => 'orders#thanks'
     post '/orders' => 'orders#create'
   end
-
+  
+  devise_for :customers, controllers: {
+     sessions:      'public/sessions',
+    passwords:     'public/passwords',
+    registrations: 'public/registrations',
+  }
+    
   namespace :admin do
-    resources :sessions, only: [:new, :create, :destroy]
     get '' => 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
