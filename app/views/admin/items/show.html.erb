@@ -13,20 +13,20 @@
         <table class="table-nowrap">
           <tbody>
             <tr>
-              <td>商品名</td>
+              <th>商品名</th>
               <td><%= @item.name %></td>
             </tr>
 
             <tr>
-              <td>商品説明</td>
+              <th>商品説明</th>
               <td><%= @item.introduction %></td>
             </tr>
 
             <tr>
-              <td>
+              <th>
                 税込価格<br>
               (税抜き価格)
-              </td>
+              </th>
               <td>
                 <%= @item * 1.1 %>
               (<%= @item.price %>)円
@@ -34,7 +34,7 @@
             </tr>
 
             <tr>
-              <td>販売ステータス</td>
+              <th>販売ステータス</th>
               <td>
                 <% if @item.is_active == true %>
                   販売中
