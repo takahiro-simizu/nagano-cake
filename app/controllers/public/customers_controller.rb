@@ -5,15 +5,28 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer = Customer.find(current_customer.id)
   end
 
   def update
+    @customer = Customer.find(current_customer.id)
+    if @customer.update(customer_params)
+      redirect_to customers_path
+    else
+      render :edit
+    end
   end
 
   def resign
   end
 
   def resign_prcs
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :postal_code, :address, :telephone_number)
   end
 
 end
