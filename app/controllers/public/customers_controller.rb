@@ -21,6 +21,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def resign_prcs
+    customer = current_customer
+    customer.update(is_active: false)
+    sign_out customer
+    redirect_to root_path
   end
 
   private

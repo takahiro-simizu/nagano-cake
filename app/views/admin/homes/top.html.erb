@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="page-header mt-5">
+    <div class="page-header mt-3">
       <h4>注文履歴一覧</h4>
     </div>
   </div>
@@ -8,22 +8,22 @@
   <div class="row">
     <div class="col-xs-10 table-responsive">
       <table class="table">
-        <tr class="active">
+        <tr class="table-active">
           <th>購入日時</th>
           <th>購入者</th>
           <th>注文個数</th>
         </tr>
 
-        <% @order.each do |o| %>
+        <% @order.each do |order| %>
           <tr>
             <td>
-              <%= link_to o.created_at.strftime("%Y/%m/%d %H:%M:%S"), "/admin/orders/#{o.id}" %>
+              <%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), "/admin/orders/#{order.id}" %>
             </td>
             <td>
-              <%= "#{o.customer.last_name} #{o.customer.first_name}" %>
+              <%= "#{order.customer.last_name} #{order.customer.first_name}" %>
             </td>
             <td>
-              <%= o.order_items.sum(:amount) %>
+              <%= order.order_items.map{ |item| item.amount }.sum %>
             </td>
           </tr>
         <% end %>

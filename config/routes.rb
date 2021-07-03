@@ -18,12 +18,11 @@ Rails.application.routes.draw do
     get '/customers/resign' => 'customers#resign'
     patch '/customers/resign_prcs' => 'customers#resign_prcs'
     resources :cart_items, only:[:index, :update, :create]
-    delete '/cart_items/:id' => 'cart_items#destroy'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
-    resources :orders, only: [:new, :index, :show]
-    post '/orders/check' => 'orders#check'
+    delete '/cart_items/:id' => 'cart_items#destroy'
+    get '/orders/check' => 'orders#check'
     get '/orders/thanks' => 'orders#thanks'
-    post '/orders' => 'orders#create'
+    resources :orders, only: [:new, :index, :show, :create]
     resources :registrations, only: [:new, :create]
   end
 

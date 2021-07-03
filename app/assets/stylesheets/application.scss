@@ -23,3 +23,31 @@
 .title {
   padding-left: 1rem;
 }
+
+.top-image {/*親div*/
+  position: relative;/*相対配置*/
+  text-align: center;
+  margin-top: 30px;
+  height: 500px;
+  width: 500px;
+  }
+
+.top-image p {
+  position: absolute;/*絶対配置*/
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin: 0;
+  padding: 0;
+  color: white;/*文字は白に*/
+  font-weight: bold; /*太字に*/
+  font-size: 1.5em;
+  font-family: Quicksand, sans-serif;/*Google Font*/
+  }
+
+.top-image img {
+  height: 100%;
+  width: 100%;
+  }

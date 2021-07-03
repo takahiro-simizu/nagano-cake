@@ -1,0 +1,45 @@
+<div class="container">
+
+  <div class="row">
+    <h4 class="rounded my-3" style="background-color: silver"> 注文情報入力 </h4>
+  </div>
+
+
+  <%= form_with model: @order, url: orders_check_path, method: :get, local: true do |f| %>
+    <h5 class="my-4">[支払い方法]</h5>
+    <div class="row">
+        <%= f.radio_button :payments, 0 %>
+        <%= f.label :payments, "クレジットカード", value: 0 %>
+        <%= f.radio_button :payments, 1 %>
+        <%= f.label :payments, "銀行振込", value: 1 %>
+    </div>
+
+    <h5 class="mt-2 mb-3">[お届け先]</h5>
+
+    <div class="row">
+      <p>
+        <%= f.radio_button :address_option, 1 %>
+        <%= f.label :address_option_1, "ご自身の住所", value: 1 %><br />
+        〒<%= current_customer.postal_code %> <%= current_customer.address %><br />
+        <%= current_customer.last_name %><%= current_customer.first_name %>
+      </p>
+    </div>
+
+    <div class="row">
+      <p>
+        <%= f.radio_button :address_option, 2 %>
+        <%= f.label :address_option_2, "新しいお届け先", value: 2 %><br />
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "mr-3" %>
+        <%= f.text_field :postal_code %><br />
+        <%= f.label :address, "住所", class: "mr-3" %>
+        <%= f.text_field :address, style: "width: 80%;" %><br />
+        <%= f.label :name, "宛名", class: "mr-3" %>
+        <%= f.text_field :name %>
+      </p>
+    </div>
+
+    <div class="row">
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary mt-2" %>
+    </div>
+  <% end %>
+</div>

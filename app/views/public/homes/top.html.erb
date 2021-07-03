@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="row">
+    <div class="top-image col text-center">
+      <img src="/assets/top_photo.jpg" alt="">
+      <p class="top-text">
+        ようこそ、ながのCAKEへ！<br />
+        このサイトは、ケーキ販売のECサイトになります。<br />
+        会員でない⽅も商品の閲覧はできますが、<br />
+        購⼊には会員登録が必要になります。
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3 class="my-3"><strong>新着商品</strong></h3>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-10 d-flex">
+    <% @items.last(4).each do |item| %>
+      <div class="mr-2">
+        <%= link_to(item_path(item), class: 'list-content') do %>
+          <%= attachment_image_tag item, :image, :fill, 300, 150, format: 'jpg' %><br>
+        <% end %>
+          <%= item.name %><br />
+          ¥<%= item.price %>
+      </div>
+    <% end %>
+    </div>
+    <div class="row ml-auto">
+      <div>
+        <%= link_to "全ての商品を⾒る >", items_path %>
+      </div>
+    </div>
+  </div>
+
+</div>

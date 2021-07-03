@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
   def index
-    @items = Item.page(params[:page]).reverse_order.per(10)
+    @items = Item.page(params[:page]).per(10)
   end
 
   def new
@@ -24,14 +24,14 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update
+    @item.update(item_params)
     redirect_to admin_item_path(@item.id)
   end
-  
+
   private
-  
+
   def item_params
-    params.require(:product).permit(:image, :name, :introduction, :price, :validation)
+    params.require(:item).permit(:image, :name, :introduction, :price, :is_active)
   end
 
 end
